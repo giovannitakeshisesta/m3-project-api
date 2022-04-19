@@ -28,7 +28,6 @@ module.exports.getCurrentUser = (req, res, next) => {
 }
 
 
-// // pruebas
 module.exports.getUsers = (req,res, next) => {
   console.log("dentro controller")
   User.find()
