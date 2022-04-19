@@ -26,3 +26,13 @@ module.exports.getCurrentUser = (req, res, next) => {
     })
     .catch(next)
 }
+
+
+// // pruebas
+module.exports.getUsers = (req,res, next) => {
+  console.log("dentro controller")
+  User.find()
+  // .populate('posts')
+  .then(users => res.status(200).json(users))
+  .catch(next)
+}
