@@ -12,18 +12,17 @@ require('./config/db.config')
 const app = express()
 
 /* Middlewares */
-
 app.use(cors())
 app.use(express.json())
 app.use(logger('dev'))
 
-/* Routes */
 
+/* Routes */
 const routes = require('./config/routes')
 app.use('/api', routes)
 
-/* Handle errors */
 
+/* Handle errors */
 app.use((req, res, next) => {
   next(createError(404, 'Route not found'))
 })
