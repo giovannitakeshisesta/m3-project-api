@@ -23,6 +23,10 @@ router.get('/users/:id', usersController.getUserById)
 
 /* Order */
 router.post('/orders',   ordersController.create)
-router.get('/orders',   ordersController.getOrders)
+router.get('/orders',    ordersController.getOrders)
+
+router.post('/holders',   ordersController.createHolders)
+router.get ('/holders',   ordersController.getHolders)
+router.put ('/holders',   ordersController.putHolders)
 
 module.exports = router
