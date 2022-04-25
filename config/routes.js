@@ -6,6 +6,7 @@ const authMiddleware = require('../middlewares/auth.middleware')
 const usersController = require('../controllers/users.controller')
 const authController = require('../controllers/auth.controller')
 const ordersController = require('../controllers/orders.controller')
+const menuController = require('../controllers/menu.controller')
 
 router.get('/', (req, res, next) => {
   console.log('hola desde routes.js');
@@ -14,6 +15,9 @@ router.get('/', (req, res, next) => {
 
 /* Auth */
 router.post('/login', authMiddleware.isNotAuthenticated, authController.login)
+
+/* Menu */
+router.post('/menu',   menuController.create)
 
 /* Users */
 router.post('/users',   authController.create)
