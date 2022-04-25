@@ -26,11 +26,16 @@ router.get('/users',     usersController.getUsers)
 router.get('/users/:id', usersController.getUserById)
 
 /* Order */
-router.post('/orders',   ordersController.create)
-router.get('/orders',    ordersController.getOrders)
+router.post('/orders/create', ordersController.createOrder)
+router.patch('/orders/:id',   ordersController.editOrder)
 
+/* Holders */
 router.post('/holders',   ordersController.createHolders)
 router.get ('/holders',   ordersController.getHolders)
 router.put ('/holders',   ordersController.putHolders)
 
 module.exports = router
+
+
+// router.post('/orders',   ordersController.addOrderToHold1)
+// router.get('/orders',    ordersController.getOrders)
