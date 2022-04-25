@@ -1,9 +1,20 @@
 const mongoose = require('mongoose')
 
+
+const item = new mongoose.Schema(
+{
+    tableInfo:{},
+    food:{},
+    drink:{}
+},
+{
+    timestamps: true
+})
+
 const holdSchema = new mongoose.Schema(
 {
     name: String,
-    items: Array
+    items: [item]
 })
 
 const holdersSchema = new mongoose.Schema(
