@@ -28,6 +28,7 @@ router.get('/users/:id', usersController.getUserById)
 /* Order */
 router.post('/orders/create', ordersController.createOrder)
 router.patch('/orders/:id',   ordersController.editOrder)
+router.delete('/orders/:id',   ordersController.deleteOrder)
 
 /* Holders */
 router.post('/holders',   ordersController.createHolders)
@@ -37,5 +38,3 @@ router.put ('/holders',   ordersController.putHolders)
 module.exports = router
 
 
-// router.post('/orders',   ordersController.addOrderToHold1)
-// router.get('/orders',    ordersController.getOrders)
