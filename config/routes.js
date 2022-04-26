@@ -30,6 +30,8 @@ router.post('/orders/create', ordersController.createOrder)
 router.patch('/orders/:id',   ordersController.editOrder)
 router.delete('/orders/:id',   ordersController.deleteOrder)
 
+router.post('/deletedOrders',   ordersController.createDeletedOrders)
+
 /* Holders */
 router.post('/holders',   ordersController.createHolders)
 router.get ('/holders',   ordersController.getHolders)

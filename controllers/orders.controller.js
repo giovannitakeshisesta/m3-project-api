@@ -1,6 +1,8 @@
 const createError = require('http-errors')
-const Order  = require('../models/Order.model')
+const Order = require('../models/Order.model')
 const Holders = require('../models/Holders.model')
+// const { response } = require('express')
+const DeletedOrder = require('../models/DeletedOrder.model')
 
 // --------- ORDERS -----------
 module.exports.createOrder = (req,res, next) => {
@@ -23,11 +25,17 @@ module.exports.editOrder = (req,res, next) => {
 
 
 module.exports.deleteOrder = (req,res, next) => {
-    console.log("jhg",req.params.id);
     Order.findByIdAndDelete(req.params.id)
         .then((order) => res.status(202).json(order))
         .catch(next)
 }
+// ---------DELETED ORDERS-----------
+module.exports.createDeletedOrders = (req,res, next) => {
+    DeletedOrder.create(req.body)
+    .then((response) => res.status(201).json(response))
+    .catch(next)
+}
+
 
 
 // ---------HOLDERS-----------
