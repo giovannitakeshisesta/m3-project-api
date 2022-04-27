@@ -1,0 +1,1 @@
+const Bill = require ('../models/Bill.model.js')

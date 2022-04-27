@@ -2,10 +2,13 @@ const express = require("express");
 const router = express.Router();
 
 const authMiddleware = require('../middlewares/auth.middleware')
-
+// Controllers
 const usersController = require('../controllers/users.controller')
 const authController = require('../controllers/auth.controller')
+
 const ordersController = require('../controllers/orders.controller')
+const holdersController = require('../controllers/holder.controller')
+const billsController = require('../controllers/bills.controller')
 const menuController = require('../controllers/menu.controller')
 
 router.get('/', (req, res, next) => {
@@ -16,26 +19,27 @@ router.get('/', (req, res, next) => {
 /* Auth */
 router.post('/login', authMiddleware.isNotAuthenticated, authController.login)
 
-/* Menu */
-router.post('/menu',   menuController.create)
-
 /* Users */
 router.post('/users',   authController.create)
 router.get('/users/me', authMiddleware.isAuthenticated, usersController.getCurrentUser)
-router.get('/users',     usersController.getUsers)
-router.get('/users/:id', usersController.getUserById)
+router.get('/users',          usersController.getUsers)
+router.get('/users/:id',      usersController.getUserById)
 
 /* Order */
 router.post('/orders/create', ordersController.createOrder)
 router.patch('/orders/:id',   ordersController.editOrder)
-router.delete('/orders/:id',   ordersController.deleteOrder)
-
-router.post('/deletedOrders',   ordersController.createDeletedOrders)
+router.delete('/orders/:id',  ordersController.deleteOrder)
 
 /* Holders */
-router.post('/holders',   ordersController.createHolders)
-router.get ('/holders',   ordersController.getHolders)
-router.put ('/holders',   ordersController.putHolders)
+router.post('/holders',       holdersController.createHolders)
+router.get ('/holders',       holdersController.getHolders)
+router.put ('/holders',       holdersController.putHolders)
+
+/* Bills */
+// router.post('/bills/create',  billsController.createBill)
+
+/* Menu */
+router.post('/menu', menuController.create)
 
 module.exports = router
 
