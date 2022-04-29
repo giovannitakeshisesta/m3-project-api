@@ -1,5 +1,5 @@
 {
-  "name": "onlyhacks",
+  "name": "ticketezy",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -18,7 +18,7 @@
   },
   "scripts": {
     "start": "nodemon ./app.js",
-    "dev": "DEBUG=onlyhacks:* nodemon ./app.js"
+    "dev": "DEBUG=ticketezy:* nodemon ./app.js"
   },
   "author": "",
   "license": "ISC"

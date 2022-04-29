@@ -21,17 +21,10 @@ const menuSchema = new mongoose.Schema(
         type:Number,
         required: [true, 'A price is required'],
     },
-    // allergens:{[
-    //     vegetarian:{
-    //         type:Boolean
-    //     },
-    //     egg:{
-    //         type:Boolean
-    //     }
-    // ]},
-    vegetarian:{
-        type:Boolean
-    },
+    allergens:[],
+    // vegetarian:{
+    //     type:Boolean
+    // },
     quantity:{
         type:Number,
         default: 0
@@ -43,9 +36,22 @@ const menuSchema = new mongoose.Schema(
     course:{
         type:Number,
         default: 1
+    },  
+    isDone:{
+        type:Boolean,
+        default:false
     }
     
-    
+},
+{
+    toJSON: {
+        transform: (doc, ret) => {
+            ret.id = ret._id;
+            delete ret._id;
+            delete ret.__v
+            return ret
+        }
+      }
 }
 )
 

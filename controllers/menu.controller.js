@@ -7,3 +7,11 @@ module.exports.create = (req, res, next) => {
     .then(response => res.status(201).json(response))
     .catch(next)
 }
+
+module.exports.getMenu = (req, res, next) => {
+    Menu.find()
+    .then(response => res.status(201).json(response))
+    .catch(next)
+}
+
+
