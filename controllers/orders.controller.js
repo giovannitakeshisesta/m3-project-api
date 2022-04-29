@@ -1,7 +1,5 @@
-const createError = require('http-errors')
 const Order = require('../models/Order.model')
 const Holders = require ('../models/Holders.model')
-const DeletedOrder = require('../models/DeletedOrder.model')
 
 module.exports.createOrder = (req,res, next) => {
     Order.create(req.body)
@@ -29,13 +27,14 @@ module.exports.deleteOrder = (req,res, next) => {
 }
 
 
-// ---------DELETED ORDERS-----------
-// module.exports.createDeletedOrders = (req,res, next) => {
-//     DeletedOrder.create(req.body)
-//     .then((response) => res.status(201).json(response))
-//     .catch(next)
-// }
-
-
-
-
+module.exports.editIsDone = (req,res, next) => {
+    const type = req.body.type
+    const name = req.body.name
+    Order.findById(req.params.id)
+        .then((response) => { 
+            const target = response[type].find(el => el.name===name)
+            target.isDone=!target.isDone
+            response.save()        
+        })
+        .catch(next)
+}

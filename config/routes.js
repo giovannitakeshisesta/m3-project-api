@@ -29,6 +29,7 @@ router.get('/users/:id',      usersController.getUserById)
 router.post('/orders/create', ordersController.createOrder)
 router.patch('/orders/:id',   ordersController.editOrder)
 router.delete('/orders/:id',  ordersController.deleteOrder)
+router.patch('/orders/isdone/:id',ordersController.editIsDone)
 
 /* Holders */
 router.post('/holders',       holdersController.createHolders)
@@ -40,6 +41,7 @@ router.put ('/holders',       holdersController.putHolders)
 
 /* Menu */
 router.post('/menu', menuController.create)
+router.get('/menu', menuController.getMenu)
 
 module.exports = router
 
