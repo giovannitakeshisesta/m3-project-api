@@ -40,6 +40,9 @@ const menuSchema = new mongoose.Schema(
     isDone:{
         type:Boolean,
         default:false
+    },
+    image: {
+      type: String
     }
     
 },

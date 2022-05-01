@@ -2,8 +2,12 @@ const createError = require('http-errors')
 const Menu  = require('../models/Menu.model')
 
 module.exports.create = (req, res, next) => {
-    console.log(req.body);
-    Menu.create(req.body)
+    const newItem = req.body
+
+    if (req.file) {
+        newItem.image = req.file.path
+    }
+    Menu.create(newItem)
     .then(response => res.status(201).json(response))
     .catch(next)
 }
@@ -22,13 +26,18 @@ module.exports.getMenuDetails = (req, res, next) => {
 }
 
 module.exports.editMenuDetails = (req, res, next) => {
-    Menu.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    const newItem = req.body
+
+    if (req.file) {
+        newItem.image = req.file.path
+    }
+    // console.log(newItem);
+    Menu.findByIdAndUpdate(req.params.id, newItem, { new: true })
     .then(response => res.status(201).json(response))
     .catch(next)
 }
 
 module.exports.deleteMenuItem = (req, res, next) => {
-    console.log(req.params.id)
     Menu.findByIdAndDelete(req.params.id)
     .then(() => res.status(202).json())
     .catch(next)
