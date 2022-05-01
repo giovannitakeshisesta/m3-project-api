@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 
 const authMiddleware = require('../middlewares/auth.middleware')
+const upload = require('./storage.config');
+
 // Controllers
 const usersController = require('../controllers/users.controller')
 const authController = require('../controllers/auth.controller')
@@ -40,10 +42,10 @@ router.put ('/holders',       holdersController.putHolders)
 // router.post('/bills/create',  billsController.createBill)
 
 /* Menu */
-router.post('/menu',      menuController.create)
+router.post('/menu',      upload.single('image'), menuController.create)
 router.get('/menu',       menuController.getMenu)
 router.get('/menu/:id',   menuController.getMenuDetails)
-router.patch('/menu/:id', menuController.editMenuDetails)
+router.patch('/menu/:id', upload.single('image'), menuController.editMenuDetails)
 router.delete('/menu/:id',menuController.deleteMenuItem)
 
 module.exports = router
