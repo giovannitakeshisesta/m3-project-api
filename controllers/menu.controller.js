@@ -15,3 +15,21 @@ module.exports.getMenu = (req, res, next) => {
 }
 
 
+module.exports.getMenuDetails = (req, res, next) => {
+    Menu.findById(req.params.id)
+    .then(response => res.status(201).json(response))
+    .catch(next)
+}
+
+module.exports.editMenuDetails = (req, res, next) => {
+    Menu.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    .then(response => res.status(201).json(response))
+    .catch(next)
+}
+
+module.exports.deleteMenuItem = (req, res, next) => {
+    console.log(req.params.id)
+    Menu.findByIdAndDelete(req.params.id)
+    .then(() => res.status(202).json())
+    .catch(next)
+}

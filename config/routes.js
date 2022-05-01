@@ -40,8 +40,11 @@ router.put ('/holders',       holdersController.putHolders)
 // router.post('/bills/create',  billsController.createBill)
 
 /* Menu */
-router.post('/menu', menuController.create)
-router.get('/menu', menuController.getMenu)
+router.post('/menu',      menuController.create)
+router.get('/menu',       menuController.getMenu)
+router.get('/menu/:id',   menuController.getMenuDetails)
+router.patch('/menu/:id', menuController.editMenuDetails)
+router.delete('/menu/:id',menuController.deleteMenuItem)
 
 module.exports = router
 
