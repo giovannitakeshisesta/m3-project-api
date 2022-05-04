@@ -27,14 +27,20 @@ module.exports.deleteOrder = (req,res, next) => {
 }
 
 
-module.exports.editIsDone = (req,res, next) => {
+module.exports.editIsDone = (req, res, next) => {
     const type = req.body.type
     const name = req.body.name
     Order.findById(req.params.id)
         .then((response) => { 
             const target = response[type].find(el => el.name===name)
             target.isDone=!target.isDone
-            response.save()        
+
+            response.markModified(type)
+            return response.save()
+                .then((order) => {
+                    console.log(order);
+                    res.json(order)
+                })
         })
         .catch(next)
 }
