@@ -38,7 +38,6 @@ module.exports.editIsDone = (req, res, next) => {
             response.markModified(type)
             return response.save()
                 .then((order) => {
-                    console.log(order);
                     res.json(order)
                 })
         })

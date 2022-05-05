@@ -31,7 +31,6 @@ module.exports.editMenuDetails = (req, res, next) => {
     if (req.file) {
         newItem.image = req.file.path
     }
-    // console.log(newItem);
     Menu.findByIdAndUpdate(req.params.id, newItem, { new: true })
     .then(response => res.status(201).json(response))
     .catch(next)
