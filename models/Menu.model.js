@@ -22,9 +22,7 @@ const menuSchema = new mongoose.Schema(
         required: [true, 'A price is required backend'],
     },
     allergens:[],
-    // vegetarian:{
-    //     type:Boolean
-    // },
+    line:[],
     quantity:{
         type:Number,
         default: 0
