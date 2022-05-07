@@ -5,21 +5,21 @@ const menuSchema = new mongoose.Schema(
 {
     type:{
         type:String,
-        required: [true, 'A type is required backend']
+        required: [true, 'A type is required ']
     },
     name : {
         type:String,
-        required: [true, 'A name is required backend'],
+        required: [true, 'A name is required '],
         trim: true,
-        minlength: [3, 'An Item must have at least 3 characters backend']
+        minlength: [3, 'An Item must have at least 3 characters ']
     },
     description:{
         type:String,
-        required: [true, 'A description is required backend']
+        required: [true, 'A description is required ']
     },
     price:{
         type:Number,
-        required: [true, 'A price is required backend'],
+        required: [true, 'A price is required '],
     },
     allergens:[],
     line:[],
