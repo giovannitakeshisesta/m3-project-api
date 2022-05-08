@@ -1,7 +1,11 @@
 const mongoose = require('mongoose')
 
 const DB_NAME = 'restaurant';
-const DB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/mydDatabase';
+// const DB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/mydDatabase';
+const DB_URI = 'mongodb://127.0.0.1:27017/restaurant';
+// const DB_URI = `${URI}/${DB_NAME}`;
+
+// const URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017';
 // const DB_URI = `${URI}/${DB_NAME}`;
 
 mongoose
